@@ -1,0 +1,8 @@
+{
+  "name": "first-project",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/LeuAlmeida/concepts.git",
+  "author": "Léu Almeida <leo@webid.net.br>",
+  "license": "MIT"
+}
