@@ -43,6 +43,20 @@ app.put("/projects/:id", (req, res) => {
   return res.json(project);
 });
 
+app.delete("/projects/:id", (req, res) => {
+  const { id } = req.params;
+
+  const projectIndex = projects.findIndex((project) => project.id === id);
+
+  if (projectIndex < 0) {
+    return res.status(400).json({ error: "Project does not found." });
+  }
+
+  projects.splice(projectIndex, 1)
+
+  return res.status(204).send()
+});
+
 app.listen(3333, () => {
   console.log("Back-end started! 👻");
 });
