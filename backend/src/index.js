@@ -2,7 +2,7 @@ const express = require("express");
 const { uuid } = require("uuidv4");
 
 const app = express();
-app.use(express.json())
+app.use(express.json());
 
 const projects = [];
 
@@ -23,7 +23,24 @@ app.post("/projects", (req, res) => {
 });
 
 app.put("/projects/:id", (req, res) => {
-  return res.json(["Projeto 1", "Projeto 2", "Projeto 3"]);
+  const { id } = req.params;
+  const { title, owner } = req.body;
+
+  const projectIndex = projects.findIndex((project) => project.id === id);
+
+  if (projectIndex < 0) {
+    return res.status(400).json({ error: "Project does not found." });
+  }
+
+  const project = {
+    id,
+    title,
+    owner,
+  };
+
+  projects[projectIndex] = project;
+
+  return res.json(project);
 });
 
 app.listen(3333, () => {
