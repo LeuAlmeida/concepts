@@ -6,4 +6,4 @@ app.get("/", (req, res) => {
   return res.json({ msg: "Hello World" });
 });
 
-app.listen(333);
+app.listen(3333);
